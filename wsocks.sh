@@ -1,8 +1,16 @@
 #!/bin/bash
-read -p "ssh user: " ssh_user
-read -p "ssh host: " ssh_host
-read -p "socks host: " socks_host
-read -p "socks port: " socks_port
 
-echo "connecting to $ssh_user@$ssh_host..."
-ssh ${ssh_user}@${ssh_host} -o "ProxyCommand=nc -X 5 -x ${socks_host}:${socks_port} %h %p"
+# interactive mode
+interactive=$1
+
+if [ $interactive == 'interactive' ]
+then
+    read -p "username@host = " target
+    read -p "socks:port = " socks
+else
+    target=$1
+    socks=$2
+fi
+
+echo "connecting to $target trough $socks ..."
+ssh ${target} -o "ProxyCommand=nc -X 5 -x ${socks} %h %p"
