@@ -1,21 +1,23 @@
-with socks
+# wsocks
 
-this small bash script enables you to connect ssh servers through socks proxy.
+This small bash script enables you to connect ssh servers through socks proxy.
 
-it assumes you are running local socks proxy server (such as SSH Proxy) on 127.0.0.1:8527
+It doesn't support authentication yet.
 
-usage:
+# setup
 
-1) clone to your local drive.
+1) git clone https://github.com/yarimadam/wsocks.git
 
-2) cd to wsocks directory.
+2) cd wsocks
 
-3) chmod +x wsocks.hs
+3) chmod +x wsocks.sh
 
-4) ./wsocks.sh
+# use
 
-5) script will guide you with the rest.
+use with arguments:
 
-future:
+`./wsocks.sh user@host socks:port`
 
-many features will be added later on.
+or try interactive mode:
+
+`./wsocks.sh interactive`
